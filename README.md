@@ -1,40 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# CSTA Standards Linking Tool
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-15.2.2-blue.svg)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.x-blue.svg)](https://tailwindcss.com/)
 
-First, run the development server:
+A tool designed to help educators, teachers, and policymakers better determine how their curriculum aligns with Computer Science Teachers Association (CSTA) standards. This application provides a PDF analysis tool to identify relevant standards in educational materials.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Table of Contents
+
+- [Features](#features)
+- [Technologies](#technologies)
+- [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Environment Variables](#environment-variables)
+  - [Installation](#installation)
+- [Usage](#usage)
+
+## Features
+
+### PDF Analysis Tool
+
+Upload educational materials (PDF format) to:
+- Automatically identify relevant CSTA National standards
+- View matching state standards
+- Adjust confidence thresholds for matches
+- See detailed information about each standard
+
+## Technologies
+
+- **Frontend**: Next.js, React, TailwindCSS
+- **Backend**: Next.js API routes
+- **Database**: PostgreSQL with Prisma ORM
+- **AI**: OpenAI API for content analysis
+- **Vector Database**: Pinecone for semantic search
+- **Data Processing**: Custom data processing for standards data
+
+## Setup
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- Yarn
+- PostgreSQL database
+- OpenAI API key
+- Pinecone API key
+
+### Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```
+# Database
+DATABASE_URL="postgresql://username:password@localhost:5432/csta_standards"
+
+# OpenAI
+OPENAI_API_KEY="your-openai-api-key"
+
+# Pinecone
+PINECONE_API_KEY="your-pinecone-api-key"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Setting Up PostgreSQL
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. Install PostgreSQL if you haven't already
+2. Create a new database:
+   ```bash
+   createdb csta_standards
+   ```
+3. Update the `DATABASE_URL` in your `.env` file with your PostgreSQL credentials
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+For more information on setting up PostgreSQL, refer to the [official documentation](https://www.postgresql.org/docs/current/tutorial-start.html).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+#### Obtaining API Keys
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **OpenAI API Key**: Sign up at [OpenAI Platform](https://platform.openai.com/) and create an API key
+- **Pinecone API Key**: Create an account at [Pinecone](https://www.pinecone.io/) and create an API key
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/appinventor-foundation/csta-linking.git
+   cd Data-Processing
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+2. Install dependencies:
+   ```bash
+   yarn install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Generate Prisma client:
+   ```bash
+   yarn generate
+   ```
 
-## Deploy on Vercel
+4. Start the development server:
+   ```bash
+   yarn dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## Usage
+
+### PDF Analysis
+
+1. Navigate to the PDF Analysis page by clicking "Analyze PDF" on the home page
+2. Upload a PDF file containing educational material
+3. Select a state (optional) to see state-specific standards
+4. Adjust the confidence threshold as needed
+5. Click "Upload and Analyze" to process the document
+6. View the matching CSTA standards and related state standards
+
