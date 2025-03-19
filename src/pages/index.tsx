@@ -138,12 +138,6 @@ export default function Home() {
               <h2 className='text-2xl font-bold mb-4'>Navigation</h2>
               <div className='flex flex-wrap gap-4'>
                 <Link
-                  href='/statistics'
-                  className='bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded'
-                >
-                  View Statistics
-                </Link>
-                <Link
                   href='/pdf'
                   className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'
                 >
