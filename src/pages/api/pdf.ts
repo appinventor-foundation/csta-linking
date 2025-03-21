@@ -14,7 +14,7 @@ export default async function handler(
   const form = new Formidable();
   const [fields, files] = await form.parse(req);
 
-  const confidence = +(fields.confidence?.at(0) || 0.5);
+  const confidence = +(fields.confidence?.at(0) || 0.3);
   const state = fields.state?.at(0) || '';
   const file = files.file?.at(0);
 
@@ -42,7 +42,6 @@ export default async function handler(
             type: 'text',
             text:
               'Give me CSTA standards that this document aligns with. ' +
-              'For example: "Model how information is broken down into smaller pieces, transmitted as packets through multiple devices over networks and the Internet, and reassembled at the destination."' +
               'Only respond with the standards and no other text. Separate each standard with an enter.',
           },
         ],

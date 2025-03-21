@@ -5,7 +5,7 @@ import { colorFromHueRange, stateAbbreviations } from '@/helpers/helpers';
 
 const Pdf: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
-  const [confidence, setConfidence] = useState(0.5);
+  const [confidence, setConfidence] = useState(0.3);
   const [state, setState] = useState('');
   const [selectedCSTA, setSelectedCSTA] = useState<
     | (CstaStandard & {
